@@ -9,15 +9,6 @@ public class Curso { //Classe
     private String rga;
     private String semestre; //2024/1
 
-    public Curso(){
-        periodo = "Matutino";
-    }
-
-    public Curso(String nome){
-        this.nome = nome;
-        this.periodo = "Noturno";
-    }
-
     public void setNome(String nome){
         this.nome = nome;
     }
