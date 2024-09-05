@@ -1,44 +1,19 @@
 package br.ufmt.alg3.curso;
 
-public class Curso { //Classe
-    
-    private String nome; //Atributo
-    private String periodo; //Mat/Vesp/Not
-    private float nota; //Estrela 0-5 fracionado
-    private String comentario;
+import br.ufmt.alg3.Identificador;
+
+public class Curso extends Identificador {
+
+    private String periodo; //Mat, Vesp, Not
     private String rga;
-    private String semestre; //2024/1
 
-    public void setNome(String nome){
+    public Curso(){
+        periodo = "Matutino";
+    }
+
+    public Curso(String nome){
         this.nome = nome;
-    }
-
-    public String getNome(){
-        return nome;
-    }
-
-    public void setPeriodo(String periodo){
-        this.periodo = periodo;
-    }
-
-    public String getPeriodo(){
-        return periodo;
-    }
-
-    public void setNota(float nota){
-        this.nota = nota;
-    }
-
-    public float getNota(){
-        return nota;
-    }
-
-    public void setComentario(String comentario){
-        this.comentario = comentario;
-    }
-
-    public String getComentario(){
-        return comentario;
+        this.periodo = "Noturno";
     }
 
     public void setRga(String rga){
@@ -49,11 +24,54 @@ public class Curso { //Classe
         return rga;
     }
 
-    public void setSemestre(String semestre){
-        this.semestre = semestre;
+    public void setPeriodo(String periodo){
+        this.periodo = periodo;
     }
 
-    public String getSemestre(){
-        return semestre;
+    public String getPeriodo(){
+        return periodo;
     }
+
+    public String imprimir(String texto){
+        return texto + " " + this.imprimir();
+    }
+
+    public String imprimir(int pos){
+        return pos + " " + imprimir();
+    }
+
+    @Override //Nao é necessário o Override
+    public String imprimir(){
+        return "Curso " + nome; 
+    }
+
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + ((getSemestre() == null) ? 0 : getSemestre().hashCode());
+        result = prime * result + ((periodo == null) ? 0 : periodo.hashCode());
+        result = prime * result + ((rga == null) ? 0 : rga.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Curso c = (Curso) obj;
+        if (!this.nome.equals(c.getNome())){
+            return false;
+        }
+        if (!getSemestre().equals(c.getSemestre())){
+            return false;
+        }
+        if(!periodo.equals(c.getPeriodo())) {
+            return false;
+        }
+        if(!rga.equals(c.getRga())){
+            return false;
+        }
+        return true;
+    }
+
+    
 }
